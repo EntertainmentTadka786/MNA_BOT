@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: entertainment-tadka-bot
+    runtime: php
+    buildCommand: |
+      chmod 755 index.php
+      mkdir -p /opt/render/project/src
+    startCommand: apache2-foreground
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_ID
+        sync: false
+      - key: MAIN_CHANNEL_ID
+        sync: false
+      - key: MAIN_CHANNEL_USERNAME
+        sync: false
+      - key: CHANNEL2_ID
+        sync: false
+      - key: CHANNEL2_USERNAME
+        sync: false
+      - key: CHANNEL3_ID
+        sync: false
+      - key: CHANNEL3_USERNAME
+        sync: false
+      - key: BACKUP_CHANNEL_ID
+        sync: false
+      - key: BACKUP_CHANNEL_USERNAME
+        sync: false
+      - key: REQUEST_GROUP_ID
+        sync: false
+      - key: REQUEST_GROUP_USERNAME
+        sync: false
+    plan: free
+    healthCheckPath: /
+    autoDeploy: true
