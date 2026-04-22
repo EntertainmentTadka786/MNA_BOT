@@ -13,12 +13,19 @@ WORKDIR /var/www/html
 # Copy application files
 COPY . /var/www/html/
 
-# Set permissions
+# Create and initialize all required files
+RUN touch /var/www/html/movies.csv \
+    && touch /var/www/html/bot.log \
+    && echo '{"requests":[],"last_id":0}' > /var/www/html/requests.json \
+    && echo '{"users":[],"total_requests":0}' > /var/www/html/users.json
+
+# Set proper permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html \
     && chmod 666 /var/www/html/movies.csv \
     && chmod 666 /var/www/html/requests.json \
-    && chmod 666 /var/www/html/bot.log
+    && chmod 666 /var/www/html/bot.log \
+    && chmod 666 /var/www/html/users.json
 
 # Configure PHP
 RUN echo "upload_max_filesize = 50M" > /usr/local/etc/php/conf.d/uploads.ini \
