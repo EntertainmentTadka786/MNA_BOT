@@ -1,0 +1,30 @@
+# Sensitive files
+.env
+*.log
+*.csv
+*.json
+!composer.json
+!requests.json
+!users.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Docker
+*.tar
+*.gz
+
+# Composer
+composer.lock
+vendor/
+
+# Temp files
+*.tmp
+*.bak
+cache/
+temp/
