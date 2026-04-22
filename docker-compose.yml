@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  movie-bot:
+    build: .
+    container_name: entertainment-tadka-bot
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - ADMIN_ID=${ADMIN_ID}
+      - MAIN_CHANNEL_ID=${MAIN_CHANNEL_ID}
+      - MAIN_CHANNEL_USERNAME=${MAIN_CHANNEL_USERNAME}
+      - CHANNEL2_ID=${CHANNEL2_ID}
+      - CHANNEL2_USERNAME=${CHANNEL2_USERNAME}
+      - CHANNEL3_ID=${CHANNEL3_ID}
+      - CHANNEL3_USERNAME=${CHANNEL3_USERNAME}
+      - BACKUP_CHANNEL_ID=${BACKUP_CHANNEL_ID}
+      - BACKUP_CHANNEL_USERNAME=${BACKUP_CHANNEL_USERNAME}
+      - REQUEST_GROUP_ID=${REQUEST_GROUP_ID}
+      - REQUEST_GROUP_USERNAME=${REQUEST_GROUP_USERNAME}
+    volumes:
+      - ./movies.csv:/var/www/html/movies.csv
+      - ./requests.json:/var/www/html/requests.json
+      - ./bot.log:/var/www/html/bot.log
+    networks:
+      - bot-network
+
+networks:
+  bot-network:
+    driver: bridge
