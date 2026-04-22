@@ -1,0 +1,17 @@
+{
+    "name": "entertainment-tadka/movie-bot",
+    "description": "Telegram Movie Bot with Auto-Delete Feature",
+    "type": "project",
+    "require": {
+        "php": ">=7.4"
+    },
+    "config": {
+        "optimize-autoloader": true
+    },
+    "scripts": {
+        "start": "php -S 0.0.0.0:8000",
+        "post-install-cmd": [
+            "chmod 755 index.php"
+        ]
+    }
+}
